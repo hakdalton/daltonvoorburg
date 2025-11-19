@@ -19,13 +19,15 @@
             --dark-blue: #003B5C;
             --darker-blue: #002b45;
             --light: #f8f9fa;
+            --page-bg: #ffffff;
+            --section-bg-alt: #f9f9f9;
             --insta-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
             --header-height: 104px;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: #ffffff;
+            background: var(--page-bg);
             overflow-x: hidden;
             color: #333;
             padding-top: var(--header-height);
@@ -604,7 +606,7 @@
         .cta-sub { font-size: 20px; opacity: 0.95; margin-bottom: 32px; line-height: 1.6; font-weight: 500; }
         
         
-        /* Instagram */
+        /* Instagram - Dalton Highlights */
         .instagram-section {
             padding: 80px 0;
             background: #fff;
@@ -612,19 +614,17 @@
 
         .insta-scroll-container {
             display: flex;
-            gap: 32px;
+            gap: 40px;
             padding: 20px 40px;
             overflow-x: auto;
             scroll-snap-type: x proximity;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
-            justify-content: flex-start;
-            margin-bottom: 40px;
+            margin: 0 auto 40px auto;
+            width: fit-content;
+            max-width: 100%;
         }
         
-        @media (min-width: 1024px) {
-            .insta-scroll-container { justify-content: center; }
-        }
         .insta-scroll-container::-webkit-scrollbar { display: none; }
 
         .insta-item {
@@ -632,21 +632,31 @@
             display: flex; flex-direction: column; align-items: center;
             cursor: pointer; transition: transform 0.3s ease; scroll-snap-align: center;
         }
-        .insta-item:hover { transform: translateY(-5px); }
+        .insta-item:hover { transform: translateY(-8px); }
 
         .insta-circle-wrapper {
-            width: 110px; height: 110px; padding: 4px; border-radius: 50%;
-            background: var(--insta-gradient); margin-bottom: 12px; position: relative;
+            width: 160px; height: 160px; padding: 5px; border-radius: 50%;
+            background: linear-gradient(45deg, var(--lime) 0%, var(--green) 50%, var(--blue) 100%);
+            margin-bottom: 16px; position: relative;
+            box-shadow: 0 10px 20px rgba(0, 144, 76, 0.15);
+            transition: box-shadow 0.3s ease;
         }
+        .insta-item:hover .insta-circle-wrapper { box-shadow: 0 15px 30px rgba(0, 144, 76, 0.3); }
+
         .insta-circle-wrapper::after {
             content: ''; position: absolute; inset: 0; border-radius: 50%;
-            border: 3px solid #fff; pointer-events: none;
+            border: 4px solid #fff; pointer-events: none;
         }
         .insta-img {
             width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
-            border: 3px solid white; background: white;
+            background: white; transition: transform 0.4s ease;
         }
-        .insta-label { font-size: 14px; font-weight: 600; color: #333; text-align: center; }
+        .insta-item:hover .insta-img { transform: scale(1.05); }
+        
+        .insta-label { 
+            font-size: 16px; font-weight: 700; color: var(--dark-blue); 
+            text-align: center; text-transform: uppercase; letter-spacing: 0.5px; 
+        }
 
         .insta-cta { text-align: center; }
 
@@ -888,16 +898,16 @@
 
             <!-- Socials nu links op de balk -->
             <div class="header-socials">
-                <a href="#" class="social-icon-brand" title="Spotify" style="color: #1DB954;">
+                <a href="#" class="social-icon-brand" title="Spotify" style="color: #1DB954;" data-tooltip="Luister de Dalton Podcast">
                     <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.32-1.38 9.841-.719 13.441 1.5.42.24.6.84.3 1.32zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
                 </a>
-                <a href="#" class="social-icon-brand" title="YouTube" style="color: #FF0000;">
+                <a href="#" class="social-icon-brand" title="YouTube" style="color: #FF0000;" data-tooltip="Bekijk onze video's">
                     <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                 </a>
-                <a href="#" class="social-icon-brand" title="Instagram" style="color: #E1306C;">
+                <a href="#" class="social-icon-brand" title="Instagram" style="color: #E1306C;" data-tooltip="Volg ons op Insta">
                     <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                 </a>
-                <a href="#" class="social-icon-brand" title="Facebook" style="color: #1877F2;">
+                <a href="#" class="social-icon-brand" title="Facebook" style="color: #1877F2;" data-tooltip="Vind ons leuk">
                     <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.791-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                 </a>
             </div>
@@ -982,7 +992,6 @@
                     <li><a href="#" class="featured-highlight">📖 Schoolgids</a></li>
                     <li><a href="#">Nieuwsbrief</a></li>
                     <li><a href="#">Ouderavonden presentaties</a></li>
-                    <li><a href="#">Driehoeksgesprekken</a></li>
                     <li><a href="#">Jaaragenda</a></li>
                 </ul>
             </div>
@@ -991,6 +1000,7 @@
                 <ul class="mega-links">
                     <li><a href="#">Ouderraad</a></li>
                     <li><a href="#">Medezeggenschapsraad</a></li>
+                    <li><a href="#">Driehoeksgesprekken</a></li>
                 </ul>
             </div>
              <div>
@@ -1011,25 +1021,18 @@
             <div>
                 <h3 class="mega-section-title">Ons Onderwijs</h3>
                 <ul class="mega-links">
+                    <li><a href="#" class="featured-highlight">📖 Schoolgids</a></li>
                     <li><a href="#">Dalton onderwijs</a></li>
                     <li><a href="#">Begaafdheidsprofielschool</a></li>
                     <li><a href="#">Coaching</a></li>
                     <li><a href="#">Topsport</a></li>
                 </ul>
             </div>
-            <div>
-                <h3 class="mega-section-title">Informatie</h3>
-                <ul class="mega-links">
-                    <li><a href="#">Instroom & Aanmelden</a></li>
-                    <li><a href="#">Schoolgids</a></li>
-                    <li><a href="#">Nieuwsbrief</a></li>
-                    <li><a href="#">Jaaragenda</a></li>
-                </ul>
-            </div>
              <div>
                 <h3 class="mega-section-title">Inspraak & Contact</h3>
                 <ul class="mega-links">
                     <li><a href="#">Medezeggenschapsraad</a></li>
+                    <li><a href="#">Ouderraad</a></li>
                     <li><a href="#">Leerlingenraad</a></li>
                     <li><a href="#">Docentcontact</a></li>
                     <li><a href="#">Vacatures</a></li>
@@ -1041,7 +1044,6 @@
                     <li><a href="#">Examenresultaten</a></li>
                     <li><a href="#">Doorstroom naar HBO/WO</a></li>
                     <li><a href="#">Inspectiebeoordelingen</a></li>
-                    <li><a href="#">Ons Team</a></li>
                 </ul>
             </div>
         </div>
@@ -1108,15 +1110,6 @@
         </div>
     </section>
 
-    <!-- CTA GROEP 8 (Ontbrak eerst) -->
-    <section class="cta-section">
-        <div class="cta-content">
-            <h2 class="cta-main-title">Zit jij in groep 8?</h2>
-            <p class="cta-sub">Ben je nieuwsgierig naar onze school? Kom sfeer proeven tijdens de open dagen of schrijf je in voor een proeflesmiddag!</p>
-            <a href="/groep8" class="btn btn-primary">Alles voor groep 8</a>
-        </div>
-    </section>
-
     <!-- FEATURES CAROUSEL (Met Navigatie Knoppen) -->
     <section class="features-section">
         <div class="section-header">
@@ -1128,7 +1121,7 @@
             <button class="scroll-nav-btn prev" id="featPrev" aria-label="Vorige">‹</button>
             
             <div class="horizontal-scroll-container features-container animate-on-load" id="featuresScroll">
-                <div class="feature-card" data-url="https://nl.wikipedia.org/wiki/Daltononderwijs">
+                <div class="feature-card">
                     <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&h=800&fit=crop" class="feature-bg" alt="Daltonuren">
                     <div class="feature-overlay"></div>
                     <div class="feature-content">
@@ -1136,7 +1129,7 @@
                         <p class="feature-text">Plan je eigen tijd en kies vakken waar jij extra hulp of verdieping bij nodig hebt.</p>
                     </div>
                 </div>
-                <div class="feature-card" data-url="https://daltonvoorburg.nl/coaching">
+                <div class="feature-card">
                     <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=800&fit=crop" class="feature-bg" alt="Coaching">
                     <div class="feature-overlay"></div>
                     <div class="feature-content">
@@ -1144,7 +1137,7 @@
                         <p class="feature-text">Je staat er nooit alleen voor. Je eigen coach helpt je met plannen en leren.</p>
                     </div>
                 </div>
-                <div class="feature-card" data-url="https://daltonvoorburg.nl/topsport">
+                <div class="feature-card">
                     <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&h=800&fit=crop" class="feature-bg" alt="Sport">
                     <div class="feature-overlay"></div>
                     <div class="feature-content">
@@ -1152,7 +1145,7 @@
                         <p class="feature-text">Combineer school en topsport met onze speciale faciliteiten en roosters.</p>
                     </div>
                 </div>
-                <div class="feature-card" data-url="https://daltonvoorburg.nl/masterclass">
+                <div class="feature-card">
                     <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&h=800&fit=crop" class="feature-bg" alt="Masterclass">
                     <div class="feature-overlay"></div>
                     <div class="feature-content">
@@ -1160,7 +1153,7 @@
                         <p class="feature-text">Verdiep je in Filosofie, Robotica of Chinees buiten de normale lessen om.</p>
                     </div>
                 </div>
-                <div class="feature-card" data-url="https://daltonvoorburg.nl/theater">
+                <div class="feature-card">
                     <img src="https://images.unsplash.com/photo-1503095396549-807759245b35?w=600&h=800&fit=crop" class="feature-bg" alt="Theater">
                     <div class="feature-overlay"></div>
                     <div class="feature-content">
@@ -1173,61 +1166,8 @@
             <button class="scroll-nav-btn next" id="featNext" aria-label="Volgende">›</button>
         </div>
     </section>
-
-    <!-- NIEUWS & AGENDA SECTION -->
-    <section class="news-agenda-section">
-        <div class="news-grid">
-            <!-- Nieuws Kolom -->
-            <div class="news-col">
-                <h3>Laatste Nieuws</h3>
-                <div class="news-item">
-                    <div class="news-date-badge">
-                        <span class="news-day">18</span>
-                        <span class="news-month">NOV</span>
-                    </div>
-                    <div class="news-content">
-                        <h4>Debatteam door naar landelijke finale</h4>
-                        <p>Onze leerlingen hebben gisteren in Utrecht een topprestatie geleverd. Gefeliciteerd!</p>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <div class="news-date-badge">
-                        <span class="news-day">14</span>
-                        <span class="news-month">NOV</span>
-                    </div>
-                    <div class="news-content">
-                        <h4>Foto's werkweek Ardennen online</h4>
-                        <p>De foto's van de spectaculaire survivalweek van klas 3 staan nu op het portaal.</p>
-                    </div>
-                </div>
-                 <div class="news-item">
-                    <div class="news-date-badge">
-                        <span class="news-day">10</span>
-                        <span class="news-month">NOV</span>
-                    </div>
-                    <div class="news-content">
-                        <h4>Nieuwe MR geïnstalleerd</h4>
-                        <p>De nieuwe leden van de medezeggenschapsraad zijn vandaag officieel begonnen.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Agenda (Already displayed above, but kept here for structure if needed, or remove if redundant) -->
-            <!-- In this layout, Agenda is moved to Intro section, so this section might be redundant if only news is left. 
-                 Let's keep it for now as a secondary news/updates section or remove if you prefer cleaner look. 
-                 Since user asked for "laatste nieuws, mag agenda heten, en agenda mag weg", I already adjusted the Intro section.
-                 I will remove this section to avoid duplication as per user request "en agenda mag weg".
-                 Wait, user said "laatste nieuws, mag agenda heten".
-                 Actually, the user wanted: 
-                 1. "Welkom" + "Agenda" (This week) in one section. 
-                 2. "Nieuws" section might be what was intended by "laatste nieuws". 
-                 Let's stick to the Intro + Agenda section I built above which combines Welcome + This Week's Agenda.
-                 I will REMOVE this separate news-agenda-section to avoid clutter and duplication.
-            -->
-        </div>
-    </section>
-
-    <!-- INSTAGRAM HIGHLIGHTS -->
+    
+    <!-- INSTAGRAM HIGHLIGHTS (Gecentreerd & Groter) -->
     <section class="instagram-section">
         <div class="section-header" style="margin-bottom: 20px;">
             <h2 class="section-title" style="font-size: 24px;">Dalton Highlights</h2>
@@ -1235,35 +1175,44 @@
         
         <div class="horizontal-scroll-container insta-scroll-container animate-on-load">
             <div class="insta-item">
-                <div class="insta-circle-wrapper"><img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=200&h=200&fit=crop" class="insta-img" alt="Brugklas"></div>
+                <div class="insta-circle-wrapper"><img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=300&h=300&fit=crop" class="insta-img" alt="Brugklas"></div>
                 <span class="insta-label">Brugklas</span>
             </div>
             <div class="insta-item">
-                <div class="insta-circle-wrapper"><img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=200&h=200&fit=crop" class="insta-img" alt="Sport"></div>
+                <div class="insta-circle-wrapper"><img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=300&h=300&fit=crop" class="insta-img" alt="Sport"></div>
                 <span class="insta-label">Sport</span>
             </div>
             <div class="insta-item">
-                <div class="insta-circle-wrapper"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=200&h=200&fit=crop" class="insta-img" alt="Diploma"></div>
+                <div class="insta-circle-wrapper"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=300&h=300&fit=crop" class="insta-img" alt="Diploma"></div>
                 <span class="insta-label">Diploma</span>
             </div>
             <div class="insta-item">
-                <div class="insta-circle-wrapper"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=200&h=200&fit=crop" class="insta-img" alt="Tech"></div>
-                <span class="insta-label">Tech</span>
+                <div class="insta-circle-wrapper"><img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=300&h=300&fit=crop" class="insta-img" alt="School"></div>
+                <span class="insta-label">School</span>
             </div>
             <div class="insta-item">
-                <div class="insta-circle-wrapper"><img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=200&h=200&fit=crop" class="insta-img" alt="Activiteiten"></div>
-                <span class="insta-label">Activiteiten</span>
+                <div class="insta-circle-wrapper"><img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?w=300&h=300&fit=crop" class="insta-img" alt="Vrienden"></div>
+                <span class="insta-label">Vrienden</span>
             </div>
              <div class="insta-item">
-                <div class="insta-circle-wrapper"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=200&h=200&fit=crop" class="insta-img" alt="Reizen"></div>
+                <div class="insta-circle-wrapper"><img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=300&h=300&fit=crop" class="insta-img" alt="Reizen"></div>
                 <span class="insta-label">Reizen</span>
             </div>
         </div>
 
         <div class="insta-cta">
-            <a href="https://instagram.com" target="_blank" class="btn btn-insta">
+            <a href="https://www.instagram.com/daltoncollegevoorburg/?hl=en" target="_blank" class="btn btn-insta">
                 Volg ons op Instagram
             </a>
+        </div>
+    </section>
+
+    <!-- CTA GROEP 8 (Levendige achtergrond) -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2 class="cta-main-title">Zit jij in groep 8?</h2>
+            <p class="cta-sub">Ben je nieuwsgierig naar onze school? Kom sfeer proeven tijdens de open dagen of schrijf je in voor een proeflesmiddag!</p>
+            <a href="/groep8" class="btn btn-primary">Alles voor groep 8</a>
         </div>
     </section>
 
@@ -1275,7 +1224,7 @@
         </div>
 
         <div class="horizontal-scroll-container video-scroll animate-on-load">
-            <div class="video-card-hor" data-video-url="https://www.youtube.com/embed/zpOULjyy-n8?autoplay=1">
+            <div class="video-card-hor">
                 <div class="video-thumb">
                     <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=800&h=450&fit=crop" alt="Rondleiding">
                     <div class="play-icon">▶</div>
@@ -1285,7 +1234,7 @@
                     <p>Loop virtueel door ons gebouw.</p>
                 </div>
             </div>
-            <div class="video-card-hor" data-video-url="https://www.youtube.com/embed/ScMzIvxBSi4?autoplay=1">
+            <div class="video-card-hor">
                 <div class="video-thumb">
                     <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&h=450&fit=crop" alt="Dalton">
                     <div class="play-icon">▶</div>
@@ -1295,7 +1244,7 @@
                     <p>Leerlingen leggen het uit.</p>
                 </div>
             </div>
-            <div class="video-card-hor" data-video-url="https://www.youtube.com/embed/EngW7tLk6R8?autoplay=1">
+            <div class="video-card-hor">
                 <div class="video-thumb">
                     <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=800&h=450&fit=crop" alt="Brugklas">
                     <div class="play-icon">▶</div>
@@ -1305,7 +1254,7 @@
                     <p>De eerste week op school.</p>
                 </div>
             </div>
-            <div class="video-card-hor" data-video-url="https://www.youtube.com/embed/LXb3EKWsInQ?autoplay=1">
+            <div class="video-card-hor">
                 <div class="video-thumb">
                     <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=450&fit=crop" alt="Feest">
                     <div class="play-icon">▶</div>
@@ -1379,10 +1328,9 @@
                 <h3>Snel naar</h3>
                 <ul class="footer-links">
                     <li><a href="#">🗓️ Jaaragenda</a></li>
-                    <li><a href="#">📝 Magister</a></li>
-                    <li><a href="#">🤒 Ziekmelden</a></li>
-                    <li><a href="#">📚 Mediatheek</a></li>
-                    <li><a href="#">💻 Cloudwise</a></li>
+                    <li><a href="#">📖 Schoolgids</a></li>
+                    <li><a href="#">📰 Nieuwsbrief</a></li>
+                    <li><a href="#">🤒 Verzuim melden</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -1393,6 +1341,7 @@
                     <li><a href="#">Ouders & Verzorgers</a></li>
                     <li><a href="#">Oud-Leerlingen</a></li>
                     <li><a href="#">Collega's (Vacatures)</a></li>
+                    <li><a href="#">Zij-instroom</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -1624,53 +1573,6 @@
                             <a href="#" class="cta-btn" onclick="window.parent.document.getElementById('closeIframe').click(); return false;">Schrijf je in voor een proefles</a>
                             <div class="close-hint" onclick="window.parent.document.getElementById('closeIframe').click();">Terug naar de website</div>
                         </div>
-                    </body>
-                    </html>
-                `;
-            } else if (type === 'agenda') {
-                // Specifieke rijke content voor de Jaaragenda
-                htmlContent = `
-                    <!DOCTYPE html>
-                    <html lang="nl">
-                    <head>
-                        <meta charset="UTF-8">
-                        <title>Jaaragenda</title>
-                        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-                        <style>
-                            body { font-family: 'Poppins', sans-serif; margin: 0; padding: 40px; color: #333; background: #f9f9f9; }
-                            h1 { color: #1d5b8a; text-align: center; margin-bottom: 40px; }
-                            .calendar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
-                            .month-card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-                            .month-title { color: #00904c; font-weight: 700; font-size: 18px; margin-bottom: 15px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-                            .event-row { display: flex; margin-bottom: 10px; font-size: 14px; }
-                            .event-date { font-weight: 600; width: 60px; color: #555; }
-                            .event-desc { flex: 1; color: #333; }
-                            .close-btn { display: block; margin: 40px auto; padding: 12px 30px; background: #1d5b8a; color: white; border: none; border-radius: 50px; font-size: 16px; cursor: pointer; }
-                            .close-btn:hover { background: #154a75; }
-                        </style>
-                    </head>
-                    <body>
-                        <h1>Jaaragenda 2025</h1>
-                        <div class="calendar-grid">
-                            <div class="month-card">
-                                <div class="month-title">Maart</div>
-                                <div class="event-row"><span class="event-date">12</span><span class="event-desc">Inschrijving Brugklas</span></div>
-                                <div class="event-row"><span class="event-date">20</span><span class="event-desc">Open Dag (19:00)</span></div>
-                                <div class="event-row"><span class="event-date">25</span><span class="event-desc">Thema-avond Ouders</span></div>
-                            </div>
-                            <div class="month-card">
-                                <div class="month-title">April</div>
-                                <div class="event-row"><span class="event-date">02</span><span class="event-desc">Sportdag Onderbouw</span></div>
-                                <div class="event-row"><span class="event-date">15</span><span class="event-desc">Start Centraal Examen</span></div>
-                                <div class="event-row"><span class="event-date">27</span><span class="event-desc">Koningsdag (Vrij)</span></div>
-                            </div>
-                            <div class="month-card">
-                                <div class="month-title">Mei</div>
-                                <div class="event-row"><span class="event-date">05</span><span class="event-desc">Bevrijdingsdag (Vrij)</span></div>
-                                <div class="event-row"><span class="event-date">22</span><span class="event-desc">Eindexamen Gala</span></div>
-                            </div>
-                        </div>
-                        <button class="close-btn" onclick="window.parent.document.getElementById('closeIframe').click();">Sluiten</button>
                     </body>
                     </html>
                 `;
